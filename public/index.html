@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Title</title>
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body><!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <div class="container">
+      <h1>Tic - Tac - Toe</h1>
+      <form class="newplayer">
+        <input type="text" placeholder="Player Name" class="playerName">
+        <button id="submit-player" type="submit" value="Play Game">Play Game </button>
+      </form>
+      <div class="game-wrapper">
+        <table>
+          <tr>
+            <td id="A1"></td>
+            <td id="A2"></td>
+            <td id="A3"></td>
+          </tr>
+          <tr>
+            <td id="B1"></td>
+            <td id="B2"></td>
+            <td id="B3"></td>
+          </tr>
+          <tr>
+            <td id="C1"></td>
+            <td id="C2"></td>
+            <td id="C3"></td>
+          </tr>
+        </table>
+      </div>
+      <button id="newGame" type="submit" value="New Game">Start a New Game</button>
+    </div>
+    <!-- build:js js/vendor.min.js-->
+    <!-- bower:js-->
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/lodash/lodash.js"></script>
+    <script src="../bower_components/firebase/firebase.js"></script>
+    <script src="../bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
+    <!-- endbower-->
+    <!-- endbuild-->
+    <!-- build:js js/main.min.js-->
+    <script src="/scripts/index.js"></script>
+    <!-- endbuild-->
+  </body>
+</html>

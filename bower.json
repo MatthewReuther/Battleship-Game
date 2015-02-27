@@ -1,0 +1,23 @@
+{
+  "name": "tic-tac-toe",
+  "version": "0.0.0",
+  "homepage": "https://github.com/ebrengle/tic-tac-toe",
+  "authors": [
+    "Eric Brengle <eric.brengle@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lodash": "~3.3.1",
+    "firebase": "~2.2.1",
+    "bootstrap-sass": "~3.3.3",
+    "font-awesome": "~4.3.0",
+    "jquery": "~2.1.3"
+  }
+}
