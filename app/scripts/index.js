@@ -1,7 +1,7 @@
-
-
 //Declare Variables
-  var fb = new Firebase (),
+  var firebaseURL = "https://battleshipit.firebaseio.com/",
+      fb          = new Firebase(firebaseURL),
+      gamesURL    = new Firebase(firebaseURL + 'games/'),
       createGame,
       array       = ['', '', '', '', '', '', '', '', '', ''],
       board       = [array, array, array, array, array, array, array, array, array, array],
@@ -32,8 +32,6 @@
     $('board').append($table);                                        //Append the tbale to the the actual game board
   }
 
-
-
     //createGame
   //addPlayer
 
@@ -43,7 +41,13 @@
   //turnCount
 
 
+function init(){
+  $('#submit-player').on('click', function(){
+    var thisplayersname = $('.playerName').val();
+    gamesURL.push({"name" : thisplayersname});
+  });
+}
 
-
-
-
+gamesURL.once("value", function(snapshot){
+  console.log(snapshot.val());
+});
