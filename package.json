@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ebrengle/tic-tac-toe"
+    "url": "https://github.com/MatthewReuther/Battleship-Game"
   },
-  "author": "Eric Brengle <eric.brengle@gmail.com>",
+  "author": "Matthew Reuther <matthew.reuther@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ebrengle/tic-tac-toe/issues"
+    "url": "https://github.com/MatthewReuther/Battleship-Game/issues"
   },
-  "homepage": "https://github.com/ebrengle/tic-tac-toe",
+  "homepage": "https://github.com/MatthewReuther/Battleship-Game",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-autoprefixer": "^2.2.0",

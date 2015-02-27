@@ -1,9 +1,9 @@
 {
   "name": "tic-tac-toe",
   "version": "0.0.0",
-  "homepage": "https://github.com/ebrengle/tic-tac-toe",
+  "homepage": "https://github.com/MatthewReuther/Battleship-Game",
   "authors": [
-    "Eric Brengle <eric.brengle@gmail.com>"
+    "Matthew Reuther <matthew.reuther@gmail.com>"
   ],
   "license": "MIT",
   "ignore": [
