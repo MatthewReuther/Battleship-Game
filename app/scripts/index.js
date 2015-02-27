@@ -1,24 +1,16 @@
-'use strict';
+$(document).ready(init);
 
-//Declare Variables
+var firebaseURL = "https://battleshipit.firebaseio.com/",
+             fb = new Firebase(firebaseURL),
+      gamesURL  = new Firebase(firebaseURL + 'games/');
 
-
-
-
-//Begin Functions
-  //createGame
-  //createBoard ===== think about using using .oneClick() or .unbind()
-    //createGame
-  //addPlayer
-
-  //appendDataToPage
-  //pullDataFromFirbase
-  //findCellIndex
-  //turnCount
-
-
-
-
-
+function init(){
+  $('#submit-player').on('click', function(){
+    var thisplayersname = $('.playerName').val();
+    gamesURL.push({"name" : thisplayersname});
+  });
 }
 
+gamesURL.once("value", function(snapshot){
+  console.log(snapshot.val());
+});
