@@ -5,28 +5,45 @@
       createGame,
       array       = ['', '', '', '', '', '', '', '', '', ''],
       board       = [array, array, array, array, array, array, array, array, array, array],
-      player1     = 'Soviet Union',
+      player1,
       player2     = 'United States',
       playerTurn,
       index;
 
-
+  // var currentGameRef = fb.child(uuid);
 
 
 // function init() {
-  $('#submit-player').on('click', function() {
-    event.preventDefault();
-    var thisplayersname = $('.playerName').val();
-      gamesURL.push({"name" : thisplayersname, "name2": "", "board": board});
-      createBoard(board);
-      // console.log(snapshot.val());
-  });
+$('#submit-player').on('click', function() {
+  event.preventDefault();
+  var thisplayersname = $('.playerName').val(),
+      uuid  = $('table').data('uuid');
+    gamesURL.push({"player1board": board, "player2board": board, "player1name" : thisplayersname, "player2name": "", "player1turn" : "", "player2turn" : ""});
+    createBoard(board);
+    console.log(uuid);
+    // console.log(snapshot.val());
+});
 // }
 
     gamesURL.once("value", function(snapshot){
-      console.log(snapshot.val());
-      // console.log(Object.keys().name);
-});
+      var games = (snapshot.val());
+
+
+      Object.keys(games).forEach(function (uuid) {
+        $('.board').attr("data-uuid", uuid);
+        // console.log(games[uuid]);
+      });
+    });
+
+
+    //   //     if (games[uuid].isOver === false) {
+    //   // // load unfinished game
+    //         createBoard(games[uuid].board);
+    //         player = games[uuid].whoseTurn;
+    //         $('table').attr("data-uuid", uuid);
+        // });
+// });
+// };      // console.log(Object.keys().name);
 
 //Begin Functions
   //createGame
