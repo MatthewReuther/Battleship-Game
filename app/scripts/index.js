@@ -11,15 +11,32 @@
       index;
 
 
+
+
+// function init() {
+  $('#submit-player').on('click', function() {
+    event.preventDefault();
+    var thisplayersname = $('.playerName').val();
+      gamesURL.push({"name" : thisplayersname, "name2": "", "board": board});
+      createBoard(board);
+      // console.log(snapshot.val());
+  });
+// }
+
+    gamesURL.once("value", function(snapshot){
+      console.log(snapshot.val());
+      // console.log(Object.keys().name);
+});
+
 //Begin Functions
   //createGame
-    $('#newGame').on('click', function(event){
-      event.preventDefault();
-      createBoard(board);
+  //   $('#newGame').on('click', function(event){
+  //     event.preventDefault();
+  //     createBoard(board);
 
 
-    });
-  //createBoard ===== think about using using .oneClick() or .unbind()
+  //   });
+  // //createBoard ===== think about using using .oneClick() or .unbind()
     function createBoard(board) {
     var $table = $('<table class="gameBoard" ></table>')              //Created table to append too
     board.forEach(function (createRow) {                              //For Each item in the board array and create a row for it
@@ -29,25 +46,13 @@
       });
     $table.append($tr);                                               //Append the created Td's to the table
     });
-    $('board').append($table);                                        //Append the tbale to the the actual game board
+    $('.board').append($table);                                        //Append the tbale to the the actual game board
   }
 
-    //createGame
+  //   //createGame
   //addPlayer
 
   //appendDataToPage
   //pullDataFromFirbase
   //findCellIndex
   //turnCount
-
-
-function init(){
-  $('#submit-player').on('click', function(){
-    var thisplayersname = $('.playerName').val();
-    gamesURL.push({"name" : thisplayersname});
-  });
-}
-
-gamesURL.once("value", function(snapshot){
-  console.log(snapshot.val());
-});
