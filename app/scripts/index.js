@@ -8,7 +8,8 @@
       player1,
       player2     = 'United States',
       playerTurn,
-      index;
+      index,
+      myDingy     = 'D';
 
   // var currentGameRef = fb.child(uuid);
 
@@ -20,7 +21,7 @@ $('#submit-player').on('click', function() {
       uuid  = $('table').data('uuid');
     gamesURL.push({"player1board": board, "player2board": board, "player1name" : thisplayersname, "player2name": "", "player1turn" : "", "player2turn" : ""});
     createBoard(board);
-    //console.log(uuid);
+    console.log("uuid");
     // console.log(snapshot.val());
 });
 // }
@@ -63,17 +64,25 @@ $('#submit-player').on('click', function() {
       });
     $table.append($tr);                                               //Append the created Td's to the table
     });
-    $('.board').append($table);                                       //Append the tbale to the the actual game board
+    $('.board').append($table);
+    clickHandlerForGameBoard();                                       //Append the tbale to the the actual game board
   };
 
-  //   //createGame
+  //createGame
   //addPlayer
 
   //appendDataToPage
   //pullDataFromFirbase
   //findCellIndex
   //turnCount
-  $('#gameBoard').find('td').on('click', function() {
-    console.log("click");
-    console.log($(this).index(), $(this).closest('td').index());
+
+  function clickHandlerForGameBoard() {
+  $('td').on('click', function() {
+  //var ericsDingy = ($('td').index(this));
+  $(this).append(myDingy);
   });
+}
+
+
+
+
