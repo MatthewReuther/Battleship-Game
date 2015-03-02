@@ -5,21 +5,55 @@
       createGame,
       array       = ['', '', '', '', '', '', '', '', '', ''],
       board       = [array, array, array, array, array, array, array, array, array, array],
-      player1     = 'Soviet Union',
+      player1,
       player2     = 'United States',
       playerTurn,
       index;
 
+  // var currentGameRef = fb.child(uuid);
+
+
+// function init() {
+$('#submit-player').on('click', function() {
+  event.preventDefault();
+  var thisplayersname = $('.playerName').val(),
+      uuid  = $('table').data('uuid');
+    gamesURL.push({"player1board": board, "player2board": board, "player1name" : thisplayersname, "player2name": "", "player1turn" : "", "player2turn" : ""});
+    createBoard(board);
+    //console.log(uuid);
+    // console.log(snapshot.val());
+});
+// }
+
+    gamesURL.once("value", function(snapshot){
+      var games = (snapshot.val());
+
+
+      Object.keys(games).forEach(function (uuid) {
+        $('.board').attr("data-uuid", uuid);
+        // console.log(games[uuid]);
+      });
+    });
+
+
+    //   //     if (games[uuid].isOver === false) {
+    //   // // load unfinished game
+    //         createBoard(games[uuid].board);
+    //         player = games[uuid].whoseTurn;
+    //         $('table').attr("data-uuid", uuid);
+        // });
+// });
+// };      // console.log(Object.keys().name);
 
 //Begin Functions
   //createGame
-    $('#newGame').on('click', function(event){
-      event.preventDefault();
-      createBoard(board);
+  //   $('#newGame').on('click', function(event){
+  //     event.preventDefault();
+  //     createBoard(board);
 
 
-    });
-  //createBoard ===== think about using using .oneClick() or .unbind()
+  //   });
+  // //createBoard ===== think about using using .oneClick() or .unbind()
     function createBoard(board) {
     var $table = $('<table class="gameBoard" ></table>')              //Created table to append too
     board.forEach(function (createRow) {                              //For Each item in the board array and create a row for it
@@ -29,25 +63,17 @@
       });
     $table.append($tr);                                               //Append the created Td's to the table
     });
-    $('board').append($table);                                        //Append the tbale to the the actual game board
-  }
+    $('.board').append($table);                                       //Append the tbale to the the actual game board
+  };
 
-    //createGame
+  //   //createGame
   //addPlayer
 
   //appendDataToPage
   //pullDataFromFirbase
   //findCellIndex
   //turnCount
-
-
-function init(){
-  $('#submit-player').on('click', function(){
-    var thisplayersname = $('.playerName').val();
-    gamesURL.push({"name" : thisplayersname});
+  $('#gameBoard').find('td').on('click', function() {
+    console.log("click");
+    console.log($(this).index(), $(this).closest('td').index());
   });
-}
-
-gamesURL.once("value", function(snapshot){
-  console.log(snapshot.val());
-});
