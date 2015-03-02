@@ -93,17 +93,15 @@ $('#submit-player').on('click', function() {
   var ericsDingy = ($('td').index(this));
   $(this).append(myDingy);
   //$('.board').add(myDingy);
-  var clickTr = $(this).closest('tr').index();                        //
-  board[clickTr].splice($(this).index(), myDingy.length, myDingy);                 //
+  var clickTr = $(this).closest('tr').index();
+  board[clickTr].splice($(this).index(), myDingy.length, myDingy);
 
-  //$(this).closest('td').append(myDingy);
-  //$(this).next( 'td' ).append(myDingy).css( "background-color", "green" );  
   });
 }
 
 //Write a function for submarine
 //If submarine is true, then you write a function for dingy
-// If dingy is tru, then battle 
+// If dingy is tru, then battle
 
 
 
