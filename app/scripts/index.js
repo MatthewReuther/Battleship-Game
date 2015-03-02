@@ -3,8 +3,6 @@
       fb          = new Firebase(firebaseURL),
       gamesURL    = new Firebase(firebaseURL + 'games/'),
       createGame,
-      // array       = ['', '', '', '', '', '', '', '', '', ''],
-      // array1      = ['', '', '', '', '', '', '', '', '', ''],
       board       = [['', '', '', '', '', '', '', '', '', ''],
                      ['', '', '', '', '', '', '', '', '', ''],
                      ['', '', '', '', '', '', '', '', '', ''],
@@ -32,11 +30,22 @@ $('#submit-player').on('click', function() {
   var thisplayersname = $('.playerName').val(),
       uuid  = $('table').data('uuid');
     gamesURL.push({"player1board": board, "player2board": board, "player1name" : thisplayersname, "player2name": "", "player1turn" : "", "player2turn" : ""});
-    createBoard(board);
+          createBoard(board);
     console.log("uuid");
     // console.log(snapshot.val());
 });
 // }
+  var shipVertical;
+
+  $('#flipShipVertically').on('click', function() {
+    shipVertical = 'true';
+    console.log(shipVertical);
+  })
+
+  $('#flipShipHorizontally').on('click', function() {
+    shipVertical = 'false';
+    console.log(shipVertical);
+  })
 
     gamesURL.once("value", function(snapshot){
       var games = (snapshot.val());
@@ -49,14 +58,6 @@ $('#submit-player').on('click', function() {
     });
 
 
-    //   //     if (games[uuid].isOver === false) {
-    //   // // load unfinished game
-    //         createBoard(games[uuid].board);
-    //         player = games[uuid].whoseTurn;
-    //         $('table').attr("data-uuid", uuid);
-        // });
-// });
-// };      // console.log(Object.keys().name);
 
 //Begin Functions
   //createGame
@@ -94,7 +95,7 @@ var clickTr;
 
   function clickHandlerForGameBoard() {
 
-  $('td').on('click', function() {
+  $('td').on('click', function(vertical) {
   var ericsDingy = ($('td').index(this));
   $(this).append(myDingy);
   //$('.board').add(myDingy);
@@ -105,26 +106,19 @@ var clickTr;
   //var yCoordinates = $(this).closest('tr').index();
 
 
-      // for (var i=0; i < 3; i++) {
-      //   var shipIndex = ($(this).index() + i);
-      //   board[clickTr].splice($(this).index() + i, 1, myDingy);      //This is what is horrizontally appending by the x coordinate
-      // };
+  for (var i=0; i < 3; i++) {
+    board[clickTr].splice($(this).index() + i, 1, myDingy);      //This is what is horrizontally appending by the x coordinate
+    console.log(clickTr);
+  };
 
-
-      // for (var i=0; i < 3; i++) {
-      // //   board[clickTr].splice($(this).index() + i, 1, myDingy);      //This is what is horrizontally appending by the x coordinate
-      // //   console.log(clickTr);
-      // };
-      for (var i=0; i < 3; i++) {
-        board[clickTr].splice($(this).index(), 1, myDingy);      //This is what is horrizontally appending by the x coordinate
-        clickTr = clickTr + 1;
-        console.log(clickTr);
-      };
-      createBoard(board);
-
-
-    });
-  }
+  for (var i=0; i < 3; i++) {
+    board[clickTr].splice($(this).index(), 1, myDingy);         //This is what is horrizontally appending by the x coordinate
+    clickTr = clickTr + 1;
+    console.log(clickTr);
+  };
+    createBoard(board);
+  });
+}
 
         // clickTr = clickTr + 1;         ////to make ships vertical
 
