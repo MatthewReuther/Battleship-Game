@@ -37,11 +37,15 @@ $('#submit-player').on('click', function() {
 $('#flipShipVertically').on('click', function() {
   shipVertical = 'true';
   console.log(shipVertical);
+  $(this).css("background-color", "lime");
+  $('#flipShipHorizontally').css("background-color", '');
 })
 
 $('#flipShipHorizontally').on('click', function() {
   shipVertical = 'false';
   console.log(shipVertical);
+  $(this).css("background-color", "lime");
+  $('#flipShipVertically').css("background-color", '');
 })
 
 gamesURL.once("value", function(snapshot){
