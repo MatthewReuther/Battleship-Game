@@ -17,8 +17,6 @@
       player2     = 'United States',
       playerTurn,
       index,
-      xCoordinates,
-      yCoordinates,
       myDingy     = 'D';
 
   // var currentGameRef = fb.child(uuid);
@@ -95,7 +93,8 @@ var clickTr;
 
   function clickHandlerForGameBoard() {
 
-  $('td').on('click', function(vertical) {
+  $('td').on('click', function() {
+
   var ericsDingy = ($('td').index(this));
   $(this).append(myDingy);
   //$('.board').add(myDingy);
@@ -106,10 +105,15 @@ var clickTr;
   //var yCoordinates = $(this).closest('tr').index();
 
 
-  for (var i=0; i < 3; i++) {
-    board[clickTr].splice($(this).index() + i, 1, myDingy);      //This is what is horrizontally appending by the x coordinate
-    console.log(clickTr);
-  };
+      for (var i=0; i < 3; i++) {
+        var shipIndex = ($(this).index() + i);
+        board[clickTr].splice($(this).index() + i, 1, myDingy);
+      };
+
+      createBoard(board);
+
+  //here
+
 
   for (var i=0; i < 3; i++) {
     board[clickTr].splice($(this).index(), 1, myDingy);         //This is what is horrizontally appending by the x coordinate
