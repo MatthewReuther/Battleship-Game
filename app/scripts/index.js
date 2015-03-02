@@ -8,6 +8,7 @@
       player1,
       player2     = 'United States',
       playerTurn,
+      myDingy     = 'x',
       index;
 
   // var currentGameRef = fb.child(uuid);
@@ -20,18 +21,30 @@ $('#submit-player').on('click', function() {
       uuid  = $('table').data('uuid');
     gamesURL.push({"player1board": board, "player2board": board, "player1name" : thisplayersname, "player2name": "", "player1turn" : "", "player2turn" : ""});
     createBoard(board);
-    console.log(uuid);
+    AppendEvent();
     // console.log(snapshot.val());
 });
+
+function AppendEvent() {
+  $('td').on('click', function() {
+    // var shipIndex = ($('td').index(this));
+    $(this).append(myDingy);
+
+    // var $pegIndex = $('td').index(this);
+    // console.log($pegIndex);
+  });
+};
 // }
 
     gamesURL.once("value", function(snapshot){
       var games = (snapshot.val());
-
+      // console.log(games[uuid]);
 
       Object.keys(games).forEach(function (uuid) {
         $('.board').attr("data-uuid", uuid);
-        // console.log(games[uuid]);
+        console.log(games[uuid]);
+        console.log(uuid);
+        console.log(fb.child('player1name'));
       });
     });
 
@@ -65,6 +78,7 @@ $('#submit-player').on('click', function() {
     });
     $('.board').append($table);                                        //Append the tbale to the the actual game board
   }
+  
 
   //   //createGame
   //addPlayer
