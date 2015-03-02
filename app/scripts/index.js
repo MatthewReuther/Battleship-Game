@@ -19,6 +19,8 @@
       player2     = 'United States',
       playerTurn,
       index,
+      xCoordinates,
+      yCoordinates,
       myDingy     = 'D';
 
   // var currentGameRef = fb.child(uuid);
@@ -91,11 +93,17 @@ $('#submit-player').on('click', function() {
 var clickTr;
 
   function clickHandlerForGameBoard() {
-    $('td').on('click', function() {
-      console.log($('td').index(this), $(this).closest('tr').index());
-      //$(this).append(myDingy);
-      clickTr = $(this).closest('tr').index();
-      //board[clickTr].splice($(this).index(), myDingy.length, myDingy);
+
+  $('td').on('click', function() {
+  var ericsDingy = ($('td').index(this));
+  $(this).append(myDingy);
+  //$('.board').add(myDingy);
+  var clickTr = $(this).closest('tr').index();
+  //board[clickTr].splice($(this).index(), myDingy.length, myDingy);
+  //console.log($('td').index(this), $(this).closest('tr').index());
+  //var xCoordinates =  $('td').index(this);
+  //var yCoordinates = $(this).closest('tr').index();
+
 
       for (var i=0; i < 3; i++) {
         var shipIndex = ($(this).index() + i);
