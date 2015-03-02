@@ -19,6 +19,8 @@
       player2     = 'United States',
       playerTurn,
       index,
+      xCoordinates,
+      yCoordinates,
       myDingy     = 'D';
 
   // var currentGameRef = fb.child(uuid);
@@ -94,7 +96,14 @@ $('#submit-player').on('click', function() {
   $(this).append(myDingy);
   //$('.board').add(myDingy);
   var clickTr = $(this).closest('tr').index();
-  board[clickTr].splice($(this).index(), myDingy.length, myDingy);
+  //board[clickTr].splice($(this).index(), myDingy.length, myDingy);
+  //console.log($('td').index(this), $(this).closest('tr').index());
+  //var xCoordinates =  $('td').index(this);
+  //var yCoordinates = $(this).closest('tr').index();
+
+  for (var i = 0; i < 3; i++ ) {
+    board[clickTr].splice($(this).index() + i, 1, myDingy);
+  }
 
   });
 }
