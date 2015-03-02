@@ -81,18 +81,22 @@ function clickHandlerForGameBoard() {
     var yCoordinates = $(this).closest('tr').index();
 
 
-    for (var i=0; i < 3; i++) {
-      var shipIndex = ($(this).index() + i);
-      board[clickTr].splice($(this).index() + i, 1, myDingy);
+    if (shipVertical === 'false') {
+    //The for loop for the horizontal placement
+      for (var i=0; i < 3; i++) {
+        var shipIndex = ($(this).index() + i);
+        board[clickTr].splice($(this).index() + i, 1, myDingy);
+      };
+
+      createBoard(board);
+    } else {
+
+      //The for loop for the vertical placement
+      for (var i=0; i < 3; i++) {
+        board[clickTr].splice($(this).index(), 1, myDingy);
+        clickTr = clickTr + 1;
+      };
+      createBoard(board);
     };
-
-    createBoard(board);
-
-
-    for (var i=0; i < 3; i++) {
-      board[clickTr].splice($(this).index(), 1, myDingy);         //This is what is horrizontally appending by the x coordinate
-      clickTr = clickTr + 1;
-    };
-    createBoard(board);
   });
 }
