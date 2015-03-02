@@ -105,16 +105,27 @@ var clickTr;
   //var yCoordinates = $(this).closest('tr').index();
 
 
-      for (var i=0; i < 3; i++) {
-        var shipIndex = ($(this).index() + i);
-        board[clickTr].splice($(this).index() + i, 1, myDingy);
-      };
+      // for (var i=0; i < 3; i++) {
+      //   var shipIndex = ($(this).index() + i);
+      //   board[clickTr].splice($(this).index() + i, 1, myDingy);      //This is what is horrizontally appending by the x coordinate
+      // };
 
+
+      // for (var i=0; i < 3; i++) {
+      // //   board[clickTr].splice($(this).index() + i, 1, myDingy);      //This is what is horrizontally appending by the x coordinate
+      // //   console.log(clickTr);
+      // };
+      for (var i=0; i < 3; i++) {
+        board[clickTr].splice($(this).index(), 1, myDingy);      //This is what is horrizontally appending by the x coordinate
+        clickTr = clickTr + 1;
+        console.log(clickTr);
+      };
       createBoard(board);
 
 
     });
   }
 
+        // clickTr = clickTr + 1;         ////to make ships vertical
 
 
