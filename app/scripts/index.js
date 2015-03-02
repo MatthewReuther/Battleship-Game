@@ -87,24 +87,30 @@ function clickHandlerForGameBoard() {
     console.log($('td').index(this), $(this).closest('tr').index());
     var xCoordinates =  $('td').index(this);
     var yCoordinates = $(this).closest('tr').index();
+    
+    var lengthOfShips = [5,4,3,3,2];
+    for (j=0; j < lengthOfShips.length; j++){
+      var myShip = lengthOfShips[j];
+      // console.log('myShip', myShip);
+      if (shipVertical === 'false') {
+      //The for loop for the horizontal placement
+        for (var i=0; i < lengthOfShips[j]; i++) {
+          console.log('myShip', lengthOfShips[j]);
+          //var shipIndex = ($(this).index() + i);
+          board[clickTr].splice($(this).index() + i, 1, myDingy);
+        }
 
+        createBoard(board);
+      } else {
 
-    if (shipVertical === 'false') {
-    //The for loop for the horizontal placement
-      for (var i=0; i < 3; i++) {
-        //var shipIndex = ($(this).index() + i);
-        board[clickTr].splice($(this).index() + i, 1, myDingy);
-      };
-
-      createBoard(board);
-    } else {
-
-      //The for loop for the vertical placement
-      for (var i=0; i < 3; i++) {
-        board[clickTr].splice($(this).index(), 1, myDingy);
-        clickTr = clickTr + 1;
-      };
-      createBoard(board);
-    };
+        //The for loop for the vertical placement
+        for (var k=0; k < lengthOfShips[j]; k++) {
+          console.log('myShip', lengthOfShips[j]);
+          board[clickTr].splice($(this).index(), 1, myDingy);
+          clickTr = clickTr + 1;
+        }
+        createBoard(board);
+      }
+    }
   });
 }
