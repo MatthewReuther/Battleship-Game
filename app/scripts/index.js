@@ -66,6 +66,8 @@ $('#submit-player').on('click', function() {
   //   });
   // //createBoard ===== think about using using .oneClick() or .unbind()
     function createBoard(board) {
+      $('#board').html('');
+
     var $table = $('<table class="gameBoard" ></table>')              //Created table to append too
     board.forEach(function (createRow) {                              //For Each item in the board array and create a row for it
       var $tr = $('<tr></tr>');                                       //created table rows in table
@@ -89,11 +91,16 @@ $('#submit-player').on('click', function() {
 var clickTr;
 
   function clickHandlerForGameBoard() {
-    $('td').on('click', function() {
-      console.log($('td').index(this), $(this).closest('tr').index());
-      //$(this).append(myDingy);
-      clickTr = $(this).closest('tr').index();
-      //board[clickTr].splice($(this).index(), myDingy.length, myDingy);
+  $('td').on('click', function() {
+  var ericsDingy = ($('td').index(this));
+  $(this).append(myDingy);
+  //$('.board').add(myDingy);
+  var clickTr = $(this).closest('tr').index();
+  //board[clickTr].splice($(this).index(), myDingy.length, myDingy);
+  //console.log($('td').index(this), $(this).closest('tr').index());
+  //var xCoordinates =  $('td').index(this);
+  //var yCoordinates = $(this).closest('tr').index();
+
 
       for (var i=0; i < 3; i++) {
         var shipIndex = ($(this).index() + i);
@@ -102,13 +109,10 @@ var clickTr;
 
       createBoard(board);
 
+  //here
 
     });
   }
-
-
-  //here
-
 
 
 
