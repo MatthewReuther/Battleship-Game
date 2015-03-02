@@ -80,8 +80,12 @@ $('#submit-player').on('click', function() {
   $('td').on('click', function() {
   //var ericsDingy = ($('td').index(this));
   $(this).append(myDingy);
+  //$(this).closest('td').append(myDingy);
+  $(this).next( 'td' ).append(myDingy).css( "background-color", "green" );
   });
 }
+
+
 
 
 
