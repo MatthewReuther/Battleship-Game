@@ -18,6 +18,10 @@ var firebaseURL = "https://battleshipit.firebaseio.com/",
     playerTurn,
     index,
     myDingy     = 'D',
+    battleShip  = 'BS',
+    carrier     = 'AC',
+    Destroyer   = 'DE',
+    Sub         = 'SU',
     shipVertical,
     clickTr;
 
@@ -88,7 +92,7 @@ function clickHandlerForGameBoard() {
     if (shipVertical === 'false') {
     //The for loop for the horizontal placement
       for (var i=0; i < 3; i++) {
-        var shipIndex = ($(this).index() + i);
+        //var shipIndex = ($(this).index() + i);
         board[clickTr].splice($(this).index() + i, 1, myDingy);
       };
 
