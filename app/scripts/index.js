@@ -3,12 +3,23 @@
       fb          = new Firebase(firebaseURL),
       gamesURL    = new Firebase(firebaseURL + 'games/'),
       createGame,
-      array       = ['', '', '', '', '', '', '', '', '', ''],
-      board       = [array, array, array, array, array, array, array, array, array, array],
+      // array       = ['', '', '', '', '', '', '', '', '', ''],
+      // array1      = ['', '', '', '', '', '', '', '', '', ''],
+      board       = [['', '', '', '', '', '', '', '', '', ''],
+                     ['', '', '', '', '', '', '', '', '', ''],
+                     ['', '', '', '', '', '', '', '', '', ''],
+                     ['', '', '', '', '', '', '', '', '', ''],
+                     ['', '', '', '', '', '', '', '', '', ''],
+                     ['', '', '', '', '', '', '', '', '', ''],
+                     ['', '', '', '', '', '', '', '', '', ''],
+                     ['', '', '', '', '', '', '', '', '', ''],
+                     ['', '', '', '', '', '', '', '', '', ''],
+                     ['', '', '', '', '', '', '', '', '', '']],
       player1,
       player2     = 'United States',
       playerTurn,
-      index;
+      index,
+      myDingy     = 'D';
 
   // var currentGameRef = fb.child(uuid);
 
@@ -20,7 +31,7 @@ $('#submit-player').on('click', function() {
       uuid  = $('table').data('uuid');
     gamesURL.push({"player1board": board, "player2board": board, "player1name" : thisplayersname, "player2name": "", "player1turn" : "", "player2turn" : ""});
     createBoard(board);
-    //console.log(uuid);
+    console.log("uuid");
     // console.log(snapshot.val());
 });
 // }
@@ -63,17 +74,38 @@ $('#submit-player').on('click', function() {
       });
     $table.append($tr);                                               //Append the created Td's to the table
     });
-    $('.board').append($table);                                       //Append the tbale to the the actual game board
+    $('.board').append($table);
+    clickHandlerForGameBoard();                                       //Append the tbale to the the actual game board
   };
 
-  //   //createGame
+  //createGame
   //addPlayer
 
   //appendDataToPage
   //pullDataFromFirbase
   //findCellIndex
   //turnCount
-  $('#gameBoard').find('td').on('click', function() {
-    console.log("click");
-    console.log($(this).index(), $(this).closest('td').index());
-  });
+
+var clickTr;
+
+  function clickHandlerForGameBoard() {
+    $('td').on('click', function() {
+      console.log($('td').index(this), $(this).closest('tr').index());
+      //$(this).append(myDingy);
+      clickTr = $(this).closest('tr').index();
+      //board[clickTr].splice($(this).index(), myDingy.length, myDingy);
+
+      for (var i=0; i < 3; i++) {
+        var shipIndex = ($(this).index() + i);
+        board[clickTr].splice($(this).index() + i, 1, myDingy);
+      };
+
+      createBoard(board);
+
+
+    });
+  }
+
+
+
+
